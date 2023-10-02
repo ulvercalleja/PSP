@@ -26,5 +26,7 @@ int main() {
     
     printf("La cadena tiene: %d vocales.\n", numVocales);
 
+    getch();
+    
     return 0;
 }
