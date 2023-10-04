@@ -38,7 +38,7 @@ int main()
     float nota_media = suma / 5;
 
     // Aprobado o no
-    printf("Lista de notas:");
+    printf("Lista de notas:\n");
     for (i = 0; i < 5; i++)
     {
         printf("Examen %d: %.2f ", i + 1, notas[i]);
@@ -56,5 +56,6 @@ int main()
     printf("Nota media: %.2f\n", nota_media);
     printf("Nota más alta: %.2f\n", nota_maxima);
     printf("Nota más baja: %.2f\n", nota_minima);
+    
     return 0;
 }

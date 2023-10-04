@@ -14,15 +14,16 @@ int main()
 {
     char cadena[BUFFER], cadenaSinEspacios[BUFFER];
     int numVocales = 0;
-    bool palindromo = true;
+    bool palindromo;
 
     printf("Introduce una frase: ");
     fgets(cadena, BUFFER, stdin);
+
     int i, j;
     i = 0;
     j = 0;
 
-    //Quitar espacios
+    // Quitar espacios
     while (cadena[i] != '\0')
     {
         if (cadena[i] != ' ')
@@ -33,13 +34,15 @@ int main()
         i++;
     }
 
-    //Comparar cadena desde el principio y desde el final
-    for (int i = 0; i < strlen(cadena); i++)
+    int longitud = strlen(cadenaSinEspacios);
+
+    // Comparar cadena desde el principio y desde el final
+    for (int i = 0; i < longitud; i++)
     {
-        for (int o = strlen(cadena); o < 0; o--)
+        for (int o = longitud; o <= 0; o--)
         {
-            char actualA = tolower(cadena[i]);
-            char actualB = tolower(cadena[o]);
+            char actualA = tolower(cadenaSinEspacios[i]);
+            char actualB = tolower(cadenaSinEspacios[o]);
             if (actualA == actualB)
             {
                 palindromo = true;
@@ -47,6 +50,7 @@ int main()
             else
             {
                 palindromo = false;
+                break;
             }
         }
     }
@@ -59,6 +63,31 @@ int main()
     {
         printf("La frase no es un palindromo.");
     }
-
-    return 0;
 }
+/*
+#include <stdio.h>
+#include <stringh>
+#include <ctype.h>
+#define BUFFER 1024
+
+int main() {
+    char frase[BUFFER];
+    int esPalindromo = 1;
+    fprintf(stdout, "Introduce una frase: ");
+    scanf(" %[\n]", frase];
+
+    int longitudFrase = strlen(frase);
+    for (int i = 0, j = longitudFrase - 1; i < j; i++, j--){
+        while(isspace(frase[1])) {
+            i++;
+        }
+        while(isspace(frase[1])) {
+            j--;
+        }
+        if (tolower(frase[i]) != tolower(tolower(frase[j])){
+            
+        }
+    }
+{
+            = longitudErase return 0;
+}*/
