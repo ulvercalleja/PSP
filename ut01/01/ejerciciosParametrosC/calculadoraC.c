@@ -15,16 +15,23 @@ int main(int argc, char *argv[]) {
     }
 
     char *operacion = argv[1];
-    double num1 = atof(argv[2]);
-    double num2 = atof(argv[3]);
-
-    if (operacion == "suma") {
+    double num1 = atoi(argv[2]);
+    double num2 = atoi(argv[3]);
+/*
+    const char *operacion = argv[1];
+    const char *num1_str = argv[2];
+    const char *num2_str = argv[3];
+    int resultado;
+    int num1 = atoi (num1_str);
+    int num2 = atoi (num2_str);
+*/
+    if (strcmp(operacion, "suma") == 0) {
         printf("%.2lf\n", num1 + num2);
-    } else if (operacion == "resta") {
+    } else if (strcmp(operacion, "resta") == 0) {
         printf("%.2lf\n", num1 - num2);
-    } else if (operacion == "multiplicacion") {
+    } else if (strcmp(operacion, "multiplicacion") == 0) {
         printf("%.2lf\n", num1 * num2);
-    } else if (operacion == "division") {
+    } else if (strcmp(operacion, "division") == 0) {
         if (num2 == 0) {
             printf("ERROR: No se puede dividir por 0.\n");
         } else {
