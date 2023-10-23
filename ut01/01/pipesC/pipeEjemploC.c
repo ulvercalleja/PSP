@@ -1,6 +1,6 @@
-#include  <stdio.h>
-#include  <signal.h>
-#include  <stdlib.h>
+#include <stdio.h>
+#include <signal.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 void signal_handler(int signo) {
