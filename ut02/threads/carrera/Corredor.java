@@ -6,15 +6,25 @@ public class Corredor implements Runnable{
     int kmRecorrido;
     int kmTotales;
     int dorsal;
-
-    public Corredor(int kmTotales, int dorsal) {
+    Object salida;
+    public Corredor(int kmTotales, int dorsal, Object salida) {
         this.kmTotales = kmTotales;
         this.dorsal = dorsal;
         kmRecorrido = 0;
+        this.salida = salida;
     }
 
     @Override
     public void run() {
+        
+        synchronized(salida){
+            try {
+                salida.wait();
+            } catch (Exception e) {
+                System.out.println("ERROR esperando: " + e.getMessage());
+            }
+        }
+
         System.out.println(String.format("¡¡Soy el dorsal %d inicio mi carrera!!", dorsal));
         while (kmRecorrido < kmTotales) {
             try {

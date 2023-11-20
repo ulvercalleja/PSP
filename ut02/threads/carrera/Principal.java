@@ -5,18 +5,22 @@ public class Principal {
     private static final int NUM_CORREDORES = 10;
 
     public static void main(String[] args) {
-        
-        
+        Object salida = new Object();
         Thread [] arrayThread = new Thread [NUM_CORREDORES];
 
-        System.out.println("¡¡ESTO COMIENZA... YA!!");
+        System.out.println("¡¡ESTO COMIENZA YA!!");
         
         for (int i = 0; i < NUM_CORREDORES; i++) {
-            arrayThread[i] = new Thread(new Corredor(TOTAL_CARRERA, (int) (Math.random()*5000)));
+            arrayThread[i] = new Thread(new Corredor(TOTAL_CARRERA, (int) (Math.random()*5000), salida));
         }
         
         for (Thread corredor : arrayThread) {
             corredor.start();
+        }
+
+        synchronized(salida){
+            salida.notifyAll();
+            System.out.println("¡¡PUUUUUM!! *disparo*");
         }
 
         for (Thread corredor : arrayThread) {
