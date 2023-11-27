@@ -2,6 +2,7 @@
     "files.associations": {
         "stdbool.h": "c",
         "notas.C": "cpp",
-        "notasC.C": "cpp"
+        "notasC.C": "cpp",
+        "stdio.h": "c"
     }
 }
