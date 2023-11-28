@@ -7,38 +7,52 @@ El programa creará n hijos y les enviará una señal a cada uno de ellos para m
 #include <fcntl.h>
 #include <string.h>
 #include <signal.h>
+#include <sys/wait.h>
 
-#define MIN_HIJOS 0
-#define NUM_HIJO 0
-#define NUM_ERROR_HIJO -1
+int main() {
+    int nProcesos;
+    pid_t pid_hijo;
 
-int main(int argc, char *argv[]) {
-    
-    int numHijos = atoi(argv[1]); // Leer numero introducido por parametros
+    printf("Ingrese el numero de procesos: ");
+    scanf("%d", &nProcesos);
 
-    if (numHijos <= MIN_HIJOS) {
-        printf("El número de hijos debe ser un entero positivo.\n");
-        return 1;
-    }
-    
-    for (int i = 0; i < numHijos; i++) {
+    //Almacenar PIDs de hijos
+    pid_t hijos[nProcesos];
 
+    for (int i = 0; i < nProcesos; i++) { //Creación de procesos hijos:
         pid_t hijo = fork();
 
-        if (hijo == NUM_ERROR_HIJO) { // Comprobar si se ha creado hijo correctamente
-            perror("Error al crear el primer hijo");
-            exit(EXIT_FAILURE);
+        if (hijo < 0) {
+            
+            perror("Error al crear el primer proceso hijo");
+            return 1;
 
-        } else if (hijo == NUM_HIJO) { // Proceso hijo
+        } else if (hijo == 0) {
             hijo = getpid();
-            printf("PID HIJO: %d", hijo);
+            printf("PID HIJO: %d\n", hijo);
+            fflush(stdout); // Forzar la limpieza del búfer
+
+            while (1) {
+                sleep(1);
+            }
+
+        } else {
+            //Codigo padre
+            hijos[i] = hijo;
         }
     }
-    /*
-    for (int i = 0; i < numHijos; i++) {
+
+    // Espera antes de enviar las señales para que todos los hijos hayan sido creados
+    sleep(2); 
+
+    for (int i = 0; i < nProcesos; i++) { //Envia señal de matar hijos
         printf("Hijo muerto: %d\n", hijos[i]);
         kill(hijos[i], SIGKILL);
-    } */
-    
+    }
+
+    for (int i = 0; i < nProcesos; i++) { //Espera a que todos los hijos terminen
+        wait(NULL);
+    }
+
     return 0;
 }
