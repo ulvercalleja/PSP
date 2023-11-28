@@ -1,6 +1,11 @@
 /*Crea un programa Java que describa las ips que tiene en ordenador en linux */
 
-package entrenamiento.ut01;
+/*NOTA: Para ejecutar este programa mediante javac y java (comandos) 
+ Asegúrate de estar en el directorio que contiene el directorio entrenamiento. Puedes usar el comando cd .. para cambiar de directorio.
+ Una vez hecho esto: javac entrenamiento/ut01/Ejercicio10.java y java entrenamiento.ut01.Ejercicio10
+*/
+
+package entrenamiento.procesos;
 
 import java.io.BufferedReader;
 import java.io.IOException;
