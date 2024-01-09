@@ -7,6 +7,7 @@ Al gestionar la señal el hijo escribirá "Recibido y terminará el proceso."*/
 #include <string.h>
 #include <signal.h>
 
+
 void sigint_handler(int signo) { // Manejador de señales
 
     pid_t hijo = fork(); 
