@@ -1,4 +1,4 @@
-package ut03.red;
+package ut03.red.udp.Ascensor;
 
 public class MainAscensor {
     public static void main(String[] args) {
